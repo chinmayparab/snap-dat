@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const Snap = ({ selectedSnap, setSelectedSnap }) => {
   const handleClick = (e) => {
@@ -8,9 +9,19 @@ const Snap = ({ selectedSnap, setSelectedSnap }) => {
   };
 
   return (
-    <div className='backdrop' onClick={handleClick}>
-      <img src={selectedSnap} alt='aloha' />
-    </div>
+    <motion.div
+      className='backdrop'
+      onClick={handleClick}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
+      <motion.img
+        src={selectedSnap}
+        alt='aloha'
+        initial={{ y: "-100vh" }}
+        animate={{ y: 0 }}
+      />
+    </motion.div>
   );
 };
 
